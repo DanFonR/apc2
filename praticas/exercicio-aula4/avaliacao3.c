@@ -65,9 +65,9 @@ int main() {
   // insira o seu código abaixo
   // soluçao:
   for (int i = 0; i < 100; i++)
-    if ((i < 10) || (90 <= i && i <= 99) || (i % 10 == 0 || i % 10 == 9)) {
-      for (int j = 1; j <= 2; j++)
-        pchar2[j + 4 * i] = 0;
+    if ((0 <= i % 90 && i % 90 <= 9) || (i % 10 == 0 || i % 10 == 9)) {
+      pchar2[1 + 4 * i] = 0;
+      pchar2[2 + 4 * i] = 0;
       pchar2[3 + 4 * i] = 0xff;
     }
   // insira o seu código acima
@@ -77,11 +77,11 @@ int main() {
   // insira o seu código abaixo
   // soluçao:
   for (int i = 0; i < 100; i++)
-  if (!(i % 11 && i % 9)) {
-    for (int j = 2; j <= 3; j++)
-      pchar3[j + 4 * i] = 0;
-    pchar3[1 + 4 * i] = 0xff;
-  }
+    if (!(i % 11 && i % 9)) {
+      pchar3[3 + 4 * i] = 0;
+      pchar3[2 + 4 * i] = 0;
+      pchar3[1 + 4 * i] = 0xff;
+    }
 
   // Exercício 3
   pchar2 = (unsigned char *)imagem2;
@@ -91,13 +91,13 @@ int main() {
   // soluçao:
   for (int i = 0; i < 100; i++) {
     if (!(i % 11 && i % 9)) {
-      for (int j = 2; j <= 3; j++)
-        pchar4[j + 4 * i] = 0;
+      pchar4[3 + 4 * i] = 0;
+      pchar4[2 + 4 * i] = 0;
       pchar4[1 + 4 * i] = 0xff;
     }
-    if ((i < 10) || (90 <= i && i <= 99) || (i % 10 == 0 || i % 10 == 9)) {
-      for (int j = 1; j <= 2; j++)
-        pchar4[j + 4 * i] = 0;
+    if ((0 <= i % 90 && i % 90 <= 9) || (i % 10 == 0 || i % 10 == 9)) {
+      pchar4[1 + 4 * i] = 0;
+      pchar4[2 + 4 * i] = 0;
       pchar4[3 + 4 * i] = 0xff;
     }
   }
