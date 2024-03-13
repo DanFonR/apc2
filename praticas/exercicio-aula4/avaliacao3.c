@@ -90,15 +90,10 @@ int main() {
   // insira o seu código abaixo
   // soluçao:
   for (int i = 0; i < 100; i++) {
-    if (!(i % 11 && i % 9)) {
-      pchar4[3 + 4 * i] = 0;
-      pchar4[2 + 4 * i] = 0;
-      pchar4[1 + 4 * i] = 0xff;
-    }
-    if ((0 <= i % 90 && i % 90 <= 9) || (i % 10 == 0 || i % 10 == 9)) {
-      pchar4[1 + 4 * i] = 0;
-      pchar4[2 + 4 * i] = 0;
-      pchar4[3 + 4 * i] = 0xff;
+    for (int j = 0; j < 4; j++) {
+      pchar4[j + 4 * i] = pchar3[j + 4 * i];
+      if ((0 <= i % 90 && i % 90 <= 9) || (i % 10 == 0 || i % 10 == 9))
+        pchar4[j + 4 * i] = pchar2[j + 4 * i];
     }
   }
   // insira o seu código acima
