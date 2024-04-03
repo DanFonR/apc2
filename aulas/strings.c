@@ -1,5 +1,5 @@
 #include <stdio.h>
-main() {
+int main() {
   char *imutavel = "imutavel";
   printf("%s\n", imutavel);
   char mutavel[] = "mutavel";
@@ -12,4 +12,5 @@ main() {
   int i = 0;
   while (string[++i] != '\0');
   printf("string \"%s\" com comprimento %d\n", string, i);
+  return 0;
 }
