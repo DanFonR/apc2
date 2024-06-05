@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #define badalloc_check(obj) \
 if (!obj) { \
-  fprintf(stderr, "erro de alocacao de memoria\n"); \
+  fprintf(stderr, "\aerro de alocacao de memoria\n"); \
+  fclose(obj); \
   exit(EXIT_FAILURE); \
 }
 
@@ -30,19 +31,28 @@ char *tabelamento(Produto* restrict produtos, size_t size) {
   return tabela;
 }
 
-void escrever_tabela(Produto* restrict produtos, size_t size) {
+int escrever_tabela(Produto* restrict produtos, size_t size) {
   FILE *prods = fopen("prods.bin", "wb");
 
   badalloc_check(prods);
 
   if (fwrite(produtos, sizeof(Produto), size, prods))
     fprintf(stderr, "tabela estruturada escrita com sucesso\n");
-  else fprintf(stderr, "erro de escrita de tabela estruturada\n");
-
+  else {
+    fprintf(stderr, "\aerro de escrita de tabela estruturada\n");
+    return 1;
+  }
+  
   fclose(prods);
+
+  return 0;
 }
 
-
+void ler_tabela(FILE* restrict prods, Produto *produtos, size_t size) {
+  if (fread(produtos, sizeof(Produto), size, prods))
+    fprintf(stderr, "arquivo lido com sucesso\n");
+  else fprintf(stderr, "\aerro de leitura do arquivo\n");
+}
 
 int main() {
   Produto produtos[] = {
